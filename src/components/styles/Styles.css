@@ -1,0 +1,37 @@
+.card {
+  border: 2px solid black;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 0px 50px;
+  font-size: 20px; 
+  text-align: left;
+  border-radius: 10px;
+}
+.thumbnail {
+    height: 200px;
+    width: 128px;
+    border: 1px solid black;
+}
+
+.title{
+    font-weight: bold;
+}
+a {
+    color: purple;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.description {
+    float: right;
+    overflow: scroll;
+    width: 80%;
+    max-height: 175px;
+    border: 3px solid rgb(82, 42, 8);
+    padding: 10px;
+    margin: 0px, 10px;
+}
+.categories {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
