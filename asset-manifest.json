@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/deploy-react-app/static/css/main.576be4c1.chunk.css",
+    "main.css": "/deploy-react-app/static/css/main.59c5d1ad.chunk.css",
     "main.js": "/deploy-react-app/static/js/main.16ab346c.chunk.js",
     "main.js.map": "/deploy-react-app/static/js/main.16ab346c.chunk.js.map",
     "runtime-main.js": "/deploy-react-app/static/js/runtime-main.842bdf1e.js",
@@ -8,9 +8,9 @@
     "static/js/2.de57095c.chunk.js": "/deploy-react-app/static/js/2.de57095c.chunk.js",
     "static/js/2.de57095c.chunk.js.map": "/deploy-react-app/static/js/2.de57095c.chunk.js.map",
     "index.html": "/deploy-react-app/index.html",
-    "precache-manifest.f20f41d68aef2443d2208ad2e8f0b138.js": "/deploy-react-app/precache-manifest.f20f41d68aef2443d2208ad2e8f0b138.js",
+    "precache-manifest.25bbe6021aa73ba619463e296b50390a.js": "/deploy-react-app/precache-manifest.25bbe6021aa73ba619463e296b50390a.js",
     "service-worker.js": "/deploy-react-app/service-worker.js",
-    "static/css/main.576be4c1.chunk.css.map": "/deploy-react-app/static/css/main.576be4c1.chunk.css.map",
+    "static/css/main.59c5d1ad.chunk.css.map": "/deploy-react-app/static/css/main.59c5d1ad.chunk.css.map",
     "static/js/2.de57095c.chunk.js.LICENSE.txt": "/deploy-react-app/static/js/2.de57095c.chunk.js.LICENSE.txt",
     "static/media/BooksLogo.png": "/deploy-react-app/static/media/BooksLogo.ab57ea18.png",
     "static/media/logo.svg": "/deploy-react-app/static/media/logo.5d5d9eef.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.842bdf1e.js",
     "static/js/2.de57095c.chunk.js",
-    "static/css/main.576be4c1.chunk.css",
+    "static/css/main.59c5d1ad.chunk.css",
     "static/js/main.16ab346c.chunk.js"
   ]
 }
