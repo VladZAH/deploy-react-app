@@ -1,55 +1,55 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import logo from './styles/logo.svg';
 import BooksLogo from './styles/BooksLogo.png';
 import './styles/App.css';
 import Axios from 'axios';
 import Item from './Item'
 
-class BookSearch extends React.Component {
-    constructor(props){
-        super(props);
+const BookSearch = () => {
+    const [books, setBooks] = useState([])
+    const [searchTerm, setSearchTerm] = useState('Harry Potter')
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(true)
 
-        this.state = {
-            books: [],
-            searchTerm: 'Harry Potter',
-            error: '',
-            loading: true,
-            placeholder: 'Harry Potter'
+
+    const handleSuccess = (response) => {
+        setBooks(response.data.items)
+        setLoading(false)
+    }  
+
+    const handleError = (error) => {
+        setLoading(false)
+        setError(error)
+    }
+
+    const handleInput = (event) => {
+        if(event.target.value){  
+            setSearchTerm(event.target.value)  
+        }else{
+            setSearchTerm('')  
         }
-    }
-
-    componentDidMount(){
-        Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchTerm}`)
-        .then(this.handleSuccess)
-        .catch(this.handleError)
-    }
-
-    handleSuccess = (response) => {
-        this.setState({books: response.data.items, loading: false});
-    }
-
-    handleError = (error) => {
-        this.setState({error: error, loading: false});
-        console.log(error);
-    }
-
-    handleInput = (event) => {
-        this.setState({searchTerm: event.target.value}); 
+        
     } 
+    useEffect(() => {
+        Axios.get(`https://www.googleapis.com/books/v1/volumes?q=HarryPotter`)
+        .then(handleSuccess)
+        .catch(handleError)
+    }, [])    
+    
 
-    handleSearch = (event) => {
+    const handleSearch = (event) => {
         event.preventDefault();
         
-        if(this.state.searchTerm.trim() !== '' ){
-            this.setState({placeholder: this.state.searchTerm, loading: true});
-            Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchTerm}`)
-            .then(this.handleSuccess)
-            .catch(this.handleError)      
+        if(searchTerm.trim() !== '' ){
+            setLoading(true)
+            Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)
+            .then(handleSuccess)
+            .catch(handleError)      
         }
     }
 
-    handelRender = () => {
-        if(this.state.loading){
+    const handelRender = () => {
+        if(loading){
             return (
                 <div>
                     <p className='message'>
@@ -59,15 +59,15 @@ class BookSearch extends React.Component {
                  </div>
             );
         }
-        if (this.state.error){
+        if (error){
             return (
                 <div className='message'> 
                     Sorry, we have an Error, look at the console for details
                 </div>
             );
         }
-        if(this.state.books){
-            return this.state.books.map(el => {
+        if(books){
+            return books.map(el => {
                 return (
                     <div key={el.id}>
                         <Item book={el} />
@@ -77,36 +77,34 @@ class BookSearch extends React.Component {
         } else {
             return (
                 <div className='message'>
-                    No books found for: {`'${this.state.placeholder}'`}
+                    No books found for: {`'${searchTerm}'`}
                 </div>
             );
         }
     }
 
-    render(){
-        return (
-            <div className="App">
-                <img className='books-logo' src={BooksLogo} alt=''></img>
-                <form onSubmit={this.handleSearch}>
-                    <input 
-                        value={this.state.searchTerm}
-                        className='input'
-                        type='text'
-                        placeholder={this.state.placeholder}
-                        onChange={this.handleInput}>
-                    </input>
-                    <button 
-                        type="submit"
-                        className='button'>
-                        Search
-                    </button>
-                </form>
-                <div className='list'>
-                    {this.handelRender()}
-                </div>
+    return (
+        <div className="App">
+            <img className='books-logo' src={BooksLogo} alt=''></img>
+            <form onSubmit={handleSearch}>
+                <input 
+                    value={searchTerm}
+                    className='input'
+                    type='text'
+                    onChange={handleInput}>
+                </input>
+                <button 
+                    type="submit"
+                    className='button'>
+                    Search
+                </button>
+            </form>
+            <div className='list'>
+                {handelRender()}
             </div>
-        );
-    }
+        </div>
+    );
+    
 }
 
 export default BookSearch;
