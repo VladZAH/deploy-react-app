@@ -5,24 +5,24 @@ import './styles/App.css';
 import Axios from 'axios';
 import Item from './Item'
 
-const BookSearch = () => {
+const BookSearch: React.FC = () => {
     const [books, setBooks] = useState([])
     const [searchTerm, setSearchTerm] = useState('Harry Potter')
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(true)
 
 
-    const handleSuccess = (response) => {
+    const handleSuccess = (response:any) => {
         setBooks(response.data.items)
         setLoading(false)
     }  
 
-    const handleError = (error) => {
+    const handleError = (error:any) => {
         setLoading(false)
         setError(error)
     }
 
-    const handleInput = (event) => {
+    const handleInput = (event:any) => {
         if(event.target.value){  
             setSearchTerm(event.target.value)  
         }else{
@@ -37,7 +37,7 @@ const BookSearch = () => {
     }, [])    
     
 
-    const handleSearch = (event) => {
+    const handleSearch = (event:any) => {
         event.preventDefault();
         
         if(searchTerm.trim() !== '' ){
