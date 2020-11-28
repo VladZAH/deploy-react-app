@@ -70,7 +70,7 @@ const BookSearch: React.FC = () => {
             return books.map(el => {
                 return (
                     <div key={el.id}>
-                        <Item book={el} />
+                        <Item book={el.volumeInfo} />
                     </div>
                 );
             });

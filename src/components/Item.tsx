@@ -4,30 +4,28 @@ import noThumbnail from './styles/noThumbnail.png';
 
 interface Props {
     book: {
-        volumeInfo:{
-            categories: string | null,
-            description: string | null,
-            imageLinks: {
-                thumbnail: string | null
-            },
-            authors: string[] | null,
-            infoLink: string | null,
-            title: string | null
-        }
+        categories: string | null,
+        description: string | null,
+        imageLinks: {
+            thumbnail: string | null
+        },
+        authors: string[] | null,
+        infoLink: string | null,
+        title: string | null 
     }
 }
 
 const Item: React.FC<Props> = ({book}) => {
-    let categories = book.volumeInfo.categories ? book.volumeInfo.categories : 'no categories found';
-    let description = book.volumeInfo.description ? book.volumeInfo.description : 'Sorry, no description was found...';
-    let thumbnail = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : noThumbnail;
-    let authors = book.volumeInfo.authors ? book.volumeInfo.authors : null;
+    let categories = book.categories ? book.categories : 'no categories found';
+    let description = book.description ? book.description : 'Sorry, no description was found...';
+    let thumbnail = book.imageLinks ? book.imageLinks.thumbnail : noThumbnail;
+    let authors = book.authors ? book.authors : null;
     
     return (
         <div className='card'>
             <p className='title'>
-                <a target='_blank' href={book.volumeInfo.infoLink} rel="noopener noreferrer">
-                    {book.volumeInfo.title}
+                <a target='_blank' href={book.infoLink} rel="noopener noreferrer">
+                    {book.title}
                 </a>
             </p>
             <p>
